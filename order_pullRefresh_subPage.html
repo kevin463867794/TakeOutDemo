@@ -9,6 +9,29 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 		<link rel="stylesheet" href="css/mui.min.css">
+		<style type="text/css">
+			.div-float{
+				float: left;
+			}
+			.value-style{
+				width: 60%;
+			}
+			.bold-style{
+				font-weight: bold;
+			}
+			.marigin-top-style{
+				margin-top: 0.5rem;
+			}
+			.orange-color-style{
+				color: orange;
+			}
+			.red-color-style{
+				color: red;
+			}
+			.clear{
+				clear: both;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -46,24 +69,39 @@
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
 						li.innerHTML = 
-				'<li class="mui-table-view-cell">'+
-					'<div class="mui-slider-cell">'+
-						'<div class="oa-contact-cell mui-table">'+
-							'<div class="oa-contact-avatar mui-table-cell">'+
-								'<img src="../images/60x60.gif" />'+
+						'<div class="sc-table-view-cell">'+
+							'<!-- 订餐时间 -->'+
+							'<div class="marigin-top-style">'+
+								'<div class="div-float bold-style">订餐时间：</div>'+
+								'<div class="div-float value-style">2016-06-24 16:30:32</div>'+
+								'<div class="clear"></div>'+
 							'</div>'+
-							'<div class="oa-contact-content mui-table-cell">'+
-								'<div class="mui-clearfix">'+
-									'<h4 class="oa-contact-name">叶文洁</h4>'+
-									'<span class="oa-contact-position mui-h6">董事长</span>'+
-								'</div>'+
-								'<p class="oa-contact-email mui-h6">'+
-									'yewenjie@sina.com'+i
-								'</p>'+
+							'<!-- 订餐内容 -->'+
+							'<div class="marigin-top-style">'+
+								'<div class="div-float orange-color-style">订餐内容：</div>'+
+								'<div class="div-float value-style">意式香肠(1) 木桶饭(2)</div>'+
+								'<div class="clear"></div>'+
 							'</div>'+
-						'</div>'+
-					'</div>'+
-				'</li>';
+							'<!-- 配送信息 -->'+
+							'<div class="marigin-top-style">'+
+								'<div class="div-float orange-color-style">配送信息：</div>'+
+								'<div class="div-float value-style">陈桂元👶👶，广州市海珠区保利天悦23栋3001小黑屋</div>'+
+								'<div class="clear"></div>'+
+							'</div>'+
+							'<!-- 合计金额 -->'+
+							'<div class="marigin-top-style">'+
+								'<div class="div-float">合计金额：</div>'+
+								'<div class="div-float value-style red-color-style">¥74元</div>'+
+								'<div class="clear"></div>'+
+							'</div>'+
+							'<!-- 支付状态 -->'+
+							'<div class="marigin-top-style">'+
+								'<div class="div-float">支付状态：</div>'+
+								'<div class="div-float value-style">货到付款</div>'+
+								'<div class="clear"></div>'+
+							'</div>'+
+							'<div class="clear"></div>'+
+						'</div>';
 						//下拉刷新，新纪录插到最前面；
 						table.insertBefore(li, table.firstChild);
 					}

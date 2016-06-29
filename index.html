@@ -3,21 +3,50 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-		<link rel="stylesheet" href="css/mui.css">
+		<link rel="stylesheet" href="css/mui.min.css">
 		<style>
 			html,
 			body {
 				background-color: #efeff4;
 			}
+			.navtitle{
+				background-color: #FFFFFF;
+			}
 		</style>
+		
+	</head>
 
+	<body>
+		<header class="mui-bar mui-bar-nav navtitle">
+			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
+			<h1 id="title" class="mui-title">HBuilder 外卖</h1>
+		</header>
+		<nav class="mui-bar mui-bar-tab">
+			<a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-menu.html">
+				<span class="mui-icon mui-icon-home"></span>
+				<span class="mui-tab-label">菜单</span>
+			</a>
+			<a class="mui-tab-item" href="tab-webview-subpage-car.html">
+				<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
+				<span class="mui-tab-label">购物车</span>
+			</a>
+			<a class="mui-tab-item" href="tab-webview-subpage-order.html">
+				<span class="mui-icon mui-icon-email"></span>
+				<span class="mui-tab-label">订单</span>
+			</a>
+			<a class="mui-tab-item" href="tab-webview-subpage-my.html">
+				<span class="mui-icon mui-icon-person"></span>
+				<span class="mui-tab-label">我的</span>
+			</a>
+		</nav>
+		
+		
 		<script src="js/mui.min.js"></script>
-		<link href="css/mui.min.css" rel="stylesheet" />
 		<script type="text/javascript" charset="utf-8">
 			//mui初始化
 			mui.init();
@@ -82,31 +111,6 @@
 				}
 			});
 		</script>
-	</head>
-
-	<body>
-		<header class="mui-bar mui-bar-nav">
-			<!--<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>-->
-			<h1 id="title" class="mui-title">HBuilder 外卖</h1>
-		</header>
-		<nav class="mui-bar mui-bar-tab">
-			<a id="defaultTab" class="mui-tab-item mui-active" href="tab-webview-subpage-menu.html">
-				<span class="mui-icon mui-icon-home"></span>
-				<span class="mui-tab-label">菜单</span>
-			</a>
-			<a class="mui-tab-item" href="tab-webview-subpage-car.html">
-				<span class="mui-icon mui-icon-bars"><span class="mui-badge">9</span></span>
-				<span class="mui-tab-label">购物车</span>
-			</a>
-			<a class="mui-tab-item" href="tab-webview-subpage-order.html">
-				<span class="mui-icon mui-icon-email"></span>
-				<span class="mui-tab-label">订单</span>
-			</a>
-			<a class="mui-tab-item" href="tab-webview-subpage-my.html">
-				<span class="mui-icon mui-icon-person"></span>
-				<span class="mui-tab-label">我的</span>
-			</a>
-		</nav>
 	</body>
 
 </html>
