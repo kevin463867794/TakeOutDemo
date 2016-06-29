@@ -10,6 +10,32 @@
 
 		<link rel="stylesheet" href="css/mui.min.css">
 	</head>
+	<style>
+		html,
+		body {
+			background-color: #efeff4;
+		}
+		
+		.mui-table-view-chevron .mui-pull-left { 
+			height: 80px;
+			width:80px;
+			max-width:80px;
+			background:red;  
+			padding: 0;
+		}
+		.mui-media-body{
+			padding: 0; 
+		}
+		.mui-ellipsis_down{
+			float: right;
+			
+		}
+		#title {
+			color: #FFFFFF;
+			font-weight: bold;
+			font-size: 1.3rem;
+		}
+	</style>¬
 
 	<body>
 		<!--下拉刷新容器-->
@@ -17,7 +43,9 @@
 			<div class="mui-scroll">
 				<!--数据列表-->
 				<ul class="mui-table-view mui-table-view-chevron">
-					
+					<a href="javascript:;">
+						
+					</a>
 				</ul>
 			</div>
 		</div>
@@ -45,7 +73,7 @@
 					for (var i = cells.length, len = i + 3; i < len; i++) {
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+						li.innerHTML = '<a class="mui-navigate-right">Itemb ' + (i + 1) + '</a>';
 						//下拉刷新，新纪录插到最前面；
 						table.insertBefore(li, table.firstChild);
 					}
@@ -55,6 +83,13 @@
 			var count = 0;
 			/**
 			 * 上拉加载具体业务实现
+			 * <img class="mui-media-object mui-pull-left" >
+						<div class="mui-media-body">
+							北京炸酱面
+							<p class='mui-ellipsis'>苏格兰打卤面,大杯可乐</p>
+							<input class="mui-ellipsis_down" type="button" value="下单" />
+							<p class='mui-ellipsis-money'>20元</p>
+						</div>
 			 */
 			function pullupRefresh() {
 				setTimeout(function() {
@@ -64,7 +99,29 @@
 					for (var i = cells.length, len = i + 20; i < len; i++) {
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+						var Image=document.createElement('img');
+						Image.className='mui-media-object mui-pull-left';
+						var itemdiv=document.createElement('div');
+						itemdiv.className='mui-media-body';
+						itemdiv.innerHTML='北京炸酱面';
+						var itemp1=document.createElement('p');
+						itemp1.className='mui-ellipsi';
+						itemp1.innerHTML='苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐苏格兰打卤面,大杯可乐';
+						
+						var iteminput=document.createElement('input');
+						iteminput.className='mui-ellipsis_down';
+						iteminput.type='button';
+						iteminput.value='下单';
+						
+						var itemp2=document.createElement('p');
+						itemp2.className='mui-ellipsis-money';
+						itemp2.innerHTML='20元';
+						
+						itemdiv.appendChild(itemp1); 
+						itemdiv.appendChild(itemp2);
+						itemdiv.appendChild(iteminput);
+						li.appendChild(Image);
+						li.appendChild(itemdiv);
 						table.appendChild(li);
 					}
 				}, 1500);
