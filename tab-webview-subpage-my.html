@@ -1,9 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<link rel="stylesheet" href="css/mui.min.css">
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			.navtitle{
+				background-color: #FFFFFF;
+			}
+			.headimg-row{
+				text-align: center;		
+			}
+			.headimg-row img{
+				background-color: #FFFFFF;
+				width: 25%;
+				height: 25%;	
+				margin-top: 1rem;	
+			}
+			.title-row h5{
+				color: #007AFF;
+				padding-top: 0.5rem;
+				padding-bottom: 0.5rem;
+				padding-left: 0.5rem;
+			}
+			.title-row{
+				background-color: #FFFFFF;
+				border-bottom-width: 0.1px;
+				border-bottom-style: solid;
+				border-bottom-color: #CCCCCC;
+			}
+			.mui-content .mui-input-group {
+				padding-top: 1rem;
+				padding-bottom: 0.5rem;
+			}
+			.mui-content .mui-input-group .mui-input-row{
+				background-color: #FFFFFF;
+				margin-right: 1rem;
+				margin-bottom: 1rem;
+			}
+			.mui-content .mui-input-group .mui-input-row input{
+				border-color: #CCCCCC;
+				border-style: solid;
+				border-width: 0.5px;
+				padding-left: 0.5rem;
+			}
+			.mui-content .mui-input-group .mui-input-row:after{
+				color: #FFFFFF;
+				background-color: #FFFFFF;
+			}
+			.div-save{
+				width: 100%;
+				overflow: hidden;
+				text-align: right;
+				border-top: solid #CCCCCC 0.5px;
+				padding-top: 0.5rem;
+			}
+		</style>
+		
 	</head>
 	<body>
+		<div class="mui-content">
+			<div class="headimg-row">
+				<img src="ima.jpg" />
+			</div>
+			<div class="title-row">
+				<h5>默认联系方式</h5>
+			</div>
+			<form class="mui-input-group">
+				<div class="mui-input-row">
+					<label>姓名</label>
+					<input type="text" placeholder="输入姓名" value="陈元👶">
+				</div>
+				
+				<div class="mui-input-row">
+					<label>电话</label>
+					<input type="text" placeholder="输入号码">
+				</div>
+				
+				<div class="mui-input-row">
+					<label>地址</label>
+					<input type="text" placeholder="输入地址" style="width: 40%;float: left;">
+					<button type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-location">定位</button>
+				</div>
+				
+				<div class="div-save">
+					<button type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-location">保存用户信息</button>
+				</div>
+			
+			</form>
+		</div>
 	</body>
+
 </html>
