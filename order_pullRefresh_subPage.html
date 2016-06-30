@@ -7,6 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta http-equiv="Access-Control-Allow-Origin" content="*.csskw.com/">
 
 		<link rel="stylesheet" href="css/mui.min.css">
 		<style type="text/css">
@@ -58,55 +59,68 @@
 					}
 				}
 			});
+			
 			/**
 			 * 下拉刷新具体业务实现
 			 */
 			function pulldownRefresh() {
-				setTimeout(function() {
-					var table = document.body.querySelector('.mui-table-view');
-					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 3; i < len; i++) {
-						var li = document.createElement('li');
-						li.className = 'mui-table-view-cell';
-						li.innerHTML = 
-						'<div class="sc-table-view-cell">'+
-							'<!-- 订餐时间 -->'+
-							'<div class="marigin-top-style">'+
-								'<div class="div-float bold-style">订餐时间：</div>'+
-								'<div class="div-float value-style">2016-06-24 16:30:32</div>'+
-								'<div class="clear"></div>'+
-							'</div>'+
-							'<!-- 订餐内容 -->'+
-							'<div class="marigin-top-style">'+
-								'<div class="div-float orange-color-style">订餐内容：</div>'+
-								'<div class="div-float value-style">意式香肠(1) 木桶饭(2)</div>'+
-								'<div class="clear"></div>'+
-							'</div>'+
-							'<!-- 配送信息 -->'+
-							'<div class="marigin-top-style">'+
-								'<div class="div-float orange-color-style">配送信息：</div>'+
-								'<div class="div-float value-style">陈桂元👶👶，广州市海珠区保利天悦23栋3001小黑屋</div>'+
-								'<div class="clear"></div>'+
-							'</div>'+
-							'<!-- 合计金额 -->'+
-							'<div class="marigin-top-style">'+
-								'<div class="div-float">合计金额：</div>'+
-								'<div class="div-float value-style red-color-style">¥74元</div>'+
-								'<div class="clear"></div>'+
-							'</div>'+
-							'<!-- 支付状态 -->'+
-							'<div class="marigin-top-style">'+
-								'<div class="div-float">支付状态：</div>'+
-								'<div class="div-float value-style">货到付款</div>'+
-								'<div class="clear"></div>'+
-							'</div>'+
-							'<div class="clear"></div>'+
-						'</div>';
-						//下拉刷新，新纪录插到最前面；
-						table.insertBefore(li, table.firstChild);
-					}
-					mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-				}, 1500);
+				mui.ajax({
+						url: "http://zjfapi.csskw.com/api//User/GetHotKey?appId=1&requestId=8e78c4ab-c87b-4b2d-8118-c78effd26499&userId=-1&sign=2F0B7CB182F8693AD12BC340CE622201",
+						success: function(e){
+							console.log(e);
+        						var table = document.body.querySelector('.mui-table-view');
+        						table.innerHTML = "";
+							var cells = document.body.querySelectorAll('.mui-table-view-cell');
+							
+							var json  = eval("("+e+")");
+							var data  = json.data;
+							data[1] = data[0];
+							data[2] = data[0];
+							for (var i = cells.length, len = i + data.length; i < len; i++) {
+								var li = document.createElement('li');
+								li.className = 'mui-table-view-cell';
+								li.id = i;
+								li.innerHTML = 
+								'<div class="sc-table-view-cell">'+
+									'<!-- 订餐时间 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float bold-style">订餐时间：</div>'+
+										'<div class="div-float value-style">2016-06-24 16:30:32</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 订餐内容 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float orange-color-style">订餐内容：</div>'+
+										'<div class="div-float value-style">'+data[i-cells.length].keyWord+i+'</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 配送信息 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float orange-color-style">配送信息：</div>'+
+										'<div class="div-float value-style">陈桂元👶👶，广州市海珠区保利天悦23栋3001小黑屋</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 合计金额 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float">合计金额：</div>'+
+										'<div class="div-float value-style red-color-style">¥74元</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 支付状态 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float">支付状态：</div>'+
+										'<div class="div-float value-style">货到付款</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<div class="clear"></div>'+
+								'</div>';
+								//下拉刷新，新纪录插到最前面；
+//								table.insertBefore(li, table.firstChild);
+								table.appendChild(li);
+							}
+							mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+						}
+     				 });
 			}
 			var count = 0;
 			/**
@@ -117,24 +131,64 @@
 					mui('#pullrefresh').pullRefresh().endPullupToRefresh((++count > 2)); //参数为true代表没有更多数据了。
 					var table = document.body.querySelector('.mui-table-view');
 					var cells = document.body.querySelectorAll('.mui-table-view-cell');
-					for (var i = cells.length, len = i + 20; i < len; i++) {
+				
+					for (var i = cells.length, len = i + 2; i < len; i++) {
 						var li = document.createElement('li');
 						li.className = 'mui-table-view-cell';
-						li.innerHTML = '<a class="mui-navigate-right">Item ' + (i + 1) + '</a>';
+						li.id = i;
+						li.innerHTML = 
+						'<div class="sc-table-view-cell">'+
+									'<!-- 订餐时间 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float bold-style">订餐时间：</div>'+
+										'<div class="div-float value-style">2016-06-24 16:30:32</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 订餐内容 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float orange-color-style">订餐内容：</div>'+
+										'<div class="div-float value-style">好'+i+'</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 配送信息 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float orange-color-style">配送信息：</div>'+
+										'<div class="div-float value-style">陈桂元👶👶，广州市海珠区保利天悦23栋3001小黑屋</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 合计金额 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float">合计金额：</div>'+
+										'<div class="div-float value-style red-color-style">¥74元</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<!-- 支付状态 -->'+
+									'<div class="marigin-top-style">'+
+										'<div class="div-float">支付状态：</div>'+
+										'<div class="div-float value-style">货到付款</div>'+
+										'<div class="clear"></div>'+
+									'</div>'+
+									'<div class="clear"></div>'+
+								'</div>';
 						table.appendChild(li);
 					}
 				}, 1500);
 			}
+			
+			mui(".mui-table-view").on('tap','.mui-table-view-cell',function(e){
+				mui.toast(this.id);
+			})
+			
 			if (mui.os.plus) {
 				mui.plusReady(function() {
 					setTimeout(function() {
-						mui('#pullrefresh').pullRefresh().pullupLoading();
+						mui('#pullrefresh').pullRefresh().pulldownLoading();
 					}, 1000);
 
 				});
 			} else {
 				mui.ready(function() {
-					mui('#pullrefresh').pullRefresh().pullupLoading();
+					mui('#pullrefresh').pullRefresh().pulldownLoading();
 				});
 			}
 		</script>
