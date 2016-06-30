@@ -71,7 +71,7 @@
         						var table = document.body.querySelector('.mui-table-view');
         						table.innerHTML = "";
 							var cells = document.body.querySelectorAll('.mui-table-view-cell');
-							
+							count = 0;
 							var json  = eval("("+e+")");
 							var data  = json.data;
 							data[1] = data[0];
@@ -176,7 +176,20 @@
 			}
 			
 			mui(".mui-table-view").on('tap','.mui-table-view-cell',function(e){
-				mui.toast(this.id);
+				mui.openWindow({
+				    url:"details.html",
+				    id:"detail",
+				    extras:{
+						name:this.id
+				    },
+				    show:{
+				      autoShow:true,//页面loaded事件发生后自动显示，默认为true
+				    },
+				    waiting:{
+				      autoShow:true,//自动显示等待框，默认为true
+				      title:'正在加载...',//等待对话框上显示的提示内容
+				    }
+				})
 			})
 			
 			if (mui.os.plus) {
