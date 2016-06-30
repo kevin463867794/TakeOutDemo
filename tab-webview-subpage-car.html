@@ -1,9 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 	</head>
+	<link rel="stylesheet" href="css/mui.min.css" />
+	<style>
+		html,
+		body {
+			background-color: #EFEFF4;
+		}
+		
+		.background-div {
+			background-color: #FFFFFF;
+			height: 10rem;
+			margin-top: 0.5rem;
+			margin-bottom: 0.5rem;
+		}
+		
+		.background-label {
+			color: cornflowerblue;
+			font-weight: bold;
+			margin-left: 10px;
+			padding-top: 10px;
+			display: block;
+		}
+		
+		.background-line {
+			margin: 0 auto;
+			padding: 0;
+			border: none;
+			height: 1px;
+			width: 95%;
+			background: #CCCCCC;
+		}
+		
+		.car-label {
+			height: 5rem;
+		}
+		
+		.background-money {
+			color: black;
+			float: right;
+			padding: 10px;
+			font-weight: bold;
+		}
+		
+		.background-divimf {
+			height: 15rem;
+			background-color: #FFFFFF;
+		}
+		
+		.labelname {
+			color: gray;
+			width: 3rem;
+			font-weight: bold;
+			margin-left: 10px;
+			padding-top: 10px;
+			display: block;
+			float: left;
+		}
+		
+		.inputname {
+			width: 10px;
+			max-width: 15rem;
+			height: 3rem;
+			margin: 0 auto;
+			padding: 0; 
+			display: block;
+		}
+		.order-btn{
+			float:right;
+			margin: 0 3rem 0 0;  
+		}
+	</style>
+
 	<body>
+		<div class="background-div">
+			<p class="background-label">清单</p>
+			<hr class="background-line" />
+			<div class="car-label"></div>
+			<hr class="background-line" />
+			<p class="background-money">合计: ¥20元</p>
+		</div>
+		<div class="background-divimf">
+			<p class="background-label">联系方式</p>
+			<div>
+				<p class="labelname">姓名</p><input class="inputname" type="text" value="陈元哥" />
+
+			</div>
+			<div>
+				<p class="labelname">电话</p><input class="inputname" type="text" value="13512723355" />
+			</div>
+			<div>
+				<p class="labelname">地址</p><input class="inputname" type="text" value="广东广州" />
+			</div>
+			<input class="order-btn" type="button" value="下单"/>
+		</div>
 	</body>
+
 </html>
